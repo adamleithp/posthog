@@ -117,7 +117,7 @@ export const personsModalLogic = kea<personsModalLogicType>([
                                     count: response.results.length,
                                     people: response.results.map((result): ActorType => {
                                         if (result[0].group_type_index !== undefined) {
-                                            const group: GroupActorType = {
+                                            const group: GroupActorType & Record<string, any> = {
                                                 type: 'group',
                                                 id: result[0].id,
                                                 group_key: result[0].group_key,
@@ -132,7 +132,7 @@ export const personsModalLogic = kea<personsModalLogicType>([
                                             })
                                             return group
                                         }
-                                        const person: PersonActorType = {
+                                        const person: PersonActorType & Record<string, any> = {
                                             type: 'person',
                                             id: result[0].id,
                                             uuid: result[0].id,
